@@ -8,7 +8,7 @@ var app = http.createServer(function(request,response){
     if (pathname === '/') {
       if (queryData.id === undefined) {
 
-        fs.readdir('/Bitnami/wampstack-7.1.17-0/apache2/htdocs/study/node.js/data', function(err, filelist){
+        fs.readdir('./data', function(err, filelist){
           console.log(filelist);
           var title = "Welcome";
           var description = "Hello, Node.js";
@@ -38,7 +38,7 @@ var app = http.createServer(function(request,response){
           response.end(template);
         })
       } else {
-        fs.readdir('/Bitnami/wampstack-7.1.17-0/apache2/htdocs/study/node.js/data', function(error, filelist){
+        fs.readdir('./data', function(error, filelist){
           var title = 'Welcome';
           var description = 'Hello, Node.js';
           var list = '<ul>';
@@ -49,7 +49,7 @@ var app = http.createServer(function(request,response){
             i = i + 1;
           }
           list = list + '</ul>';
-          fs.readFile(`/Bitnami/wampstack-7.1.17-0/apache2/htdocs/study/node.js/data/${queryData.id}`, 'utf8', function(err, description){
+          fs.readFile(`./data/${queryData.id}`, 'utf8', function(err, description){
             var title = queryData.id;
             var template = `
             <!doctype html>
